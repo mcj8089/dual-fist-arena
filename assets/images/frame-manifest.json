@@ -1,0 +1,218 @@
+{
+  "dir": "assets/images/frames/",
+  "canvas": 256,
+  "baseline": 16,
+  "_comment": "Dual Fist Arena 逐帧资产唯一登记表。头身比 1:5.5，脚底基准 y=240，纯黑剪影 + 橙护腕，无分层部件。向左一律 setFlipX 复用。所有动作 6 帧（红线：>=5 帧，禁止 2 帧交替）。",
+  "characters": {
+    "player": {
+      "scale": 1.0,
+      "actions": {
+        "idle": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 9,
+          "note": "站桩待机，双拳收胸前，呼吸起伏，脚底不动"
+        },
+        "guard": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 11,
+          "note": "双拳抬到面前，肘收内，下巴压，膝盖微屈（判定窗口姿态）"
+        },
+        "attack": {
+          "type": "once",
+          "frames": 6,
+          "fps": 24,
+          "next": "idle",
+          "note": "空手直拳向右：蓄力→送出→全伸→回收；向左用 setFlipX"
+        },
+        "attack_armed": {
+          "type": "once",
+          "frames": 6,
+          "fps": 22,
+          "next": "idle",
+          "note": "持刃斜劈，刃长=身高*0.55，固定右手握持"
+        },
+        "hit": {
+          "type": "once",
+          "frames": 6,
+          "fps": 16,
+          "next": "idle",
+          "note": "被先手击中：后仰→踉跄→稳住"
+        },
+        "die": {
+          "type": "once",
+          "frames": 6,
+          "fps": 12,
+          "next": null,
+          "note": "失衡→后飞→触地→瘫平；ragdoll 同时驱动位移"
+        }
+      }
+    },
+    "grunt": {
+      "reuseOf": "player",
+      "tint": "0x8f9bb3",
+      "scale": 0.94,
+      "actions": {
+        "idle": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 8
+        },
+        "guard": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 10
+        },
+        "attack": {
+          "type": "once",
+          "frames": 6,
+          "fps": 20,
+          "next": "idle"
+        },
+        "attack_armed": {
+          "type": "once",
+          "frames": 6,
+          "fps": 20,
+          "next": "idle"
+        },
+        "hit": {
+          "type": "once",
+          "frames": 6,
+          "fps": 15,
+          "next": "idle"
+        },
+        "die": {
+          "type": "once",
+          "frames": 6,
+          "fps": 12,
+          "next": null
+        }
+      }
+    },
+    "brute": {
+      "reuseOf": "player",
+      "tint": "0xd06a4a",
+      "scale": 1.12,
+      "actions": {
+        "idle": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 8
+        },
+        "guard": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 10
+        },
+        "attack_armed": {
+          "type": "once",
+          "frames": 6,
+          "fps": 18,
+          "next": "idle"
+        },
+        "hit": {
+          "type": "once",
+          "frames": 6,
+          "fps": 14,
+          "next": "idle"
+        },
+        "die": {
+          "type": "once",
+          "frames": 6,
+          "fps": 11,
+          "next": null
+        }
+      }
+    },
+    "boss": {
+      "reuseOf": "player",
+      "tint": "0x9a6ad0",
+      "scale": 1.28,
+      "actions": {
+        "idle": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 8
+        },
+        "guard": {
+          "type": "loop",
+          "frames": 6,
+          "fps": 10
+        },
+        "attack_armed": {
+          "type": "once",
+          "frames": 6,
+          "fps": 18,
+          "next": "idle"
+        },
+        "hit": {
+          "type": "once",
+          "frames": 6,
+          "fps": 14,
+          "next": "idle"
+        },
+        "die": {
+          "type": "once",
+          "frames": 6,
+          "fps": 10,
+          "next": null
+        }
+      }
+    }
+  },
+  "transitions": {
+    "idle": [
+      "guard",
+      "attack",
+      "attack_armed",
+      "hit",
+      "die"
+    ],
+    "guard": [
+      "idle",
+      "attack",
+      "attack_armed",
+      "hit",
+      "die"
+    ],
+    "attack": [
+      "idle",
+      "guard",
+      "hit",
+      "die"
+    ],
+    "attack_armed": [
+      "idle",
+      "guard",
+      "hit",
+      "die"
+    ],
+    "hit": [
+      "idle",
+      "guard",
+      "die"
+    ],
+    "die": []
+  },
+  "fx": {
+    "impact": {
+      "frames": 6,
+      "fps": 26
+    },
+    "perfect": {
+      "frames": 6,
+      "fps": 22
+    },
+    "deathburst": {
+      "frames": 6,
+      "fps": 18
+    },
+    "bloodpool": {
+      "frames": 6,
+      "fps": 9,
+      "note": "玩家阵亡原地化成的血泊：溅点→摊开→稳定。播完停在最后一帧（hold），不销毁"
+    }
+  },
+  "ext": "webp"
+}

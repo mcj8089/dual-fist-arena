@@ -1,0 +1,48 @@
+Dual Fist Arena — Game Info (English)
+=======================================
+
+Title:
+Dual Fist Arena — Timing Stickman Brawler
+
+Category:
+Casual (Action · Fighting · Arcade · Brawler · 2D · Single-player · Browser · Free)
+
+TAGS:
+Casual, Action, Fighting, Brawler, Arcade, Stickman, Timing, Combat, Ragdoll, 2D, Single-player, Level-Based, Browser Game, HTML5, Free-to-Play, No Download, Desktop and Mobile, Keyboard Controls, Touch Controls
+
+Short Description:
+Walk, jump and punch through 40 stickman arenas. Every opponent telegraphs a cue — punch inside that window and the hit lands, swing early and you eat the counter. Dodge sweeps, break armour, parry overheads, chain perfect hits. Five chapters, one new verb at a time, ending with a boss that changes its own rules three times. Free in your browser.
+
+How to Play:
+Side-scrolling stickman brawler on one rule: swing at the wrong moment and you are wide open. Every opponent telegraphs a cue.
+
+Move. Left and right arrows or A and D walk the arena. Position is half the fight. Move speed is 320 pixels per second.
+
+Jump. Up arrow, W or Space. A jump clears a ground swing and a sweep, but an overhead will catch you in the air.
+
+Guard. Hold down or S. Guarding absorbs an overhead. Press it just before a fist lands and it turns into a parry.
+
+Punch. Enter or J. Hit the side that is actually open. On touch screens use the two fist buttons.
+
+Dash. Shift or double-tap a direction. Closes the gap when an opponent backs off. Dash distance is 88 pixels.
+
+The hit math. Attack range is 116 pixels with 26 pixels of contact tolerance. The enemy adds a 26-pixel lunge before the cue. Swing early and you get 460 milliseconds of miss-lock — no more punching while the counter comes in.
+
+Damage. A normal hit takes 18. A boss hit takes 28. Max HP is 100. Starting lives are 3.
+
+Perfect window. The first arena opens at 340 milliseconds and tightens as the chapters roll on. Land inside it for a perfect bonus.
+
+Forty arenas across five chapters, eight per chapter:
+- Chapter 1 — Timing. Teaches the cue, then adds dash-ins, low sweeps and armour.
+- Chapter 2 — Counters. Turns defence into offence with stagger counters, parries and feints.
+- Chapter 3 — Weapons. Blades, hammers, chain blades and energy spears drop mid-fight; armoured squads; a shrinking arena.
+- Chapter 4 — Tax. Every punch costs stamina, knockback can push you out of the ring.
+- Chapter 5 — Final. Combines all of it, ending with a boss that changes its own rules three times.
+
+Coins. 60 per clear, 10 per level, 5 per kill, 2 per perfect. Shop: gear unlock for 300, upgrade for 500. A rewarded ad grants 300.
+
+Assists. Three per run. Focus widens the next punch window by 220 milliseconds for 6 seconds. A rewarded video refills once per run.
+
+Frame-by-frame animation. Every action plays a full sequence of independently rendered transparent frames. Ragdoll knockback on an 11-point mass-spring skeleton drives the flying, tumbling and grounded collapse.
+
+Free, no install, no account. Read the cue. Hit the open side.

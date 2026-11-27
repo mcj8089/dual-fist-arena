@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>Dual Fist Arena - Timing Brawler</title>
+<meta name="description" content="A side-scrolling stickman brawler. Walk, jump and time each punch to the perfect cue, chain combos and unlock weapons across 40 levels. Play free on pipygames.com." />
+<meta name="theme-color" content="#120c0a" />
+<link rel="icon" href="data:," />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="pipygames.com" />
+<meta property="og:title" content="Dual Fist Arena - Master the Perfect Strike" />
+<meta property="og:description" content="Walk, jump and punch through 40 stickman arenas. Chain perfect hits, dodge counters mid-air, grab random weapons and clear every wave in Dual Fist Arena, free on pipygames.com." />
+<meta property="og:url" content="https://pipygames.com/games/dual-fist-arena/" />
+<meta property="og:image" content="https://pipygames.com/games/dual-fist-arena/poster.jpg" />
+<meta property="og:image:secure_url" content="https://pipygames.com/games/dual-fist-arena/poster.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="450" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dual Fist Arena - Master the Perfect Strike" />
+<meta name="twitter:description" content="Walk, jump and punch through 40 stickman arenas. Chain perfect hits, dodge counters mid-air, grab random weapons and clear every wave in Dual Fist Arena, free on pipygames.com." />
+<meta name="twitter:image" content="https://pipygames.com/games/dual-fist-arena/poster.jpg" />
+
+<link rel="stylesheet" href="styles.css" />
+
+<script src="https://pipygames.com/sdk/pipysdk.min.js" data-app-id="dual-fist-arena"></script>
+<script src="lib/phaser.min.js"></script>
+
+<script type="importmap">
+{
+  "imports": {
+    "config/": "./config/",
+    "core/": "./src/core/",
+    "art/": "./src/art/",
+    "game/": "./src/game/",
+    "ui/": "./src/ui/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="stage">
+  <div id="game-root" role="application" aria-label="Dual Fist Arena battle stage"></div>
+  <div id="hint-layer" class="hint-layer" aria-live="polite" role="status"></div>
+  <div id="ui-root"></div>
+</div>
+
+<div id="boot" class="boot">
+  <div class="boot__inner">
+    <div class="boot__mark">pipygames<span>.com</span></div>
+    <div class="boot__ring" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="boot__bar"><em id="boot-fill"></em></div>
+    <div class="boot__row">
+      <span class="boot__tip" id="boot-tip">Loading…</span>
+      <span class="boot__pct" id="boot-pct" aria-live="polite">0%</span>
+    </div>
+  </div>
+</div>
+<script>
+  /* 开屏自检：ES Module 的静态依赖在 link 阶段就失败了，任何 try/catch 都拦不到，
+     浏览器只会往控制台丢一句 "does not provide an export named ..."，
+     页面停在 Loading 上一直转圈。这里把错误直接画到开屏页上，并加超时看门狗。 */
+  (function () {
+    var shown = false;
+    function paint(msg) {
+      if (shown) return;
+      shown = true;
+      var boot = document.getElementById("boot");
+      var tip = document.getElementById("boot-tip");
+      if (tip) tip.textContent = msg;
+      if (boot) boot.classList.add("is-fail");
+      console.error("[boot]", msg);
+    }
+    window.__pipyBootFail = paint;
+    window.addEventListener("error", function (e) {
+      var t = e.target;
+      if (t && (t.tagName === "SCRIPT" || t.tagName === "LINK")) {
+        paint("Failed to load " + (t.src || t.href).split("/").pop());
+      } else {
+        paint(e.message || "Unknown error");
+      }
+    }, true);
+    window.addEventListener("unhandledrejection", function (e) {
+      var r = e.reason;
+      paint((r && (r.message || String(r))) || "Module failed to load");
+    });
+    setTimeout(function () {
+      if (!window.__pipyBootOk) {
+        paint("Load timed out.\nPress Ctrl+Shift+R to hard-reload, or reopen with 一键启动.bat");
+      }
+    }, 10000);
+  })();
+</script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
